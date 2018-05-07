@@ -125,14 +125,7 @@ namespace App11.Views.auth
 
                     }
 
-                    if (responses.intrest == "Researcher")
-                    {
-                        CrossSettings.Current.AddOrUpdateValue("userrole", "Researcher");
-                        //     await Navigation.PushModalAsync(new ResearcherMaster());
-
-                        await DisplayAlert("ok", "sfsdfds", "okad");
-                        //await Navigation.PushModalAsync(new BuyersHome());
-                    }
+                  
 
 
                 }

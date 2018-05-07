@@ -106,7 +106,6 @@
                         <Picker.Items>
                             <x:String>Seller</x:String>
                             <x:String>Buyer</x:String>
-                            <x:String>Researcher</x:String>
                         </Picker.Items>
                     </Picker>
 

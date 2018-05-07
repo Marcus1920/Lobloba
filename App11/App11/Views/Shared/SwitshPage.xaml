@@ -18,7 +18,7 @@
                 <Picker.Items>
                     <x:String>Buyer</x:String>
                     <x:String>Seller</x:String>
-                    <x:String>Researcher</x:String>
+                 
 
 
                 </Picker.Items>
