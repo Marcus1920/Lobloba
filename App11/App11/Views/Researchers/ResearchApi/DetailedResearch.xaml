@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Researchers.ResearchApi.DetailedResearch"
+            BackgroundImage="darkblue.png"
+             Title="Detailed Research">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="notFound" Text="No new Research to display." TextColor="Gray" IsVisible="false" Margin="10" />
+
+            <Grid x:Name="GridDetails" Margin="10" Padding="5" BackgroundColor="White">
+
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="210" />
+                </Grid.RowDefinitions>
+
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200" />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFill" Source="{Binding imageUrl}" />
+                <StackLayout Grid.Row="0" Grid.Column="1">
+                    <StackLayout  VerticalOptions="StartAndExpand">
+
+
+                        <Label FontAttributes="None" Text="{Binding natureOfBusiness}"/>
+                        <Label></Label>
+
+                        <Label FontAttributes="None" Text="{Binding summaryBox}" />
+                        <Label></Label>
+
+                        <Label FontAttributes="None" Text="{Binding researchNotes}" />
+
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Shared.RecipeDetails"
+           Title="{Binding Name}"
+             NavigationPage.HasBackButton="True">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <RelativeLayout BackgroundColor="LightGray"
+                >
+                    <Image 
+                        x:Name="BannerImage"
+                        Aspect="AspectFill" 
+                        Source="{Binding Imgurl}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.5}"/>
+
+                    <StackLayout x:Name="DetailsLayout"
+                                 BackgroundColor="White"
+                                 Margin="10, 0, 10, 10"
+                                 RelativeLayout.HeightConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.5,
+                    Constant=15}"
+                                 RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                                 RelativeLayout.YConstraint="{ConstraintExpression
+                    Type=RelativeToView,
+                    ElementName=BannerImage,
+                    Property=Height,
+                    Factor=1,
+                    Constant=-15}">
+
+                        <StackLayout
+                            Orientation="Horizontal"
+                            BackgroundColor="LightSlateGray">
+
+                            <Label 
+                                Margin="25, 20, 0, 0"
+                                Text="Recipe Details"
+                                TextColor="White"
+                                FontSize="30"/>
+                        </StackLayout>
+
+                        <ScrollView>
+                            <Grid Margin="25, 5" RowSpacing="2.5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Recipe Name" />
+                                <Label Grid.Row="0" Grid.Column="1" TextColor="Black" FontAttributes="Bold" Text="{Binding Name}"/>
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="Posted by" />
+                                <Label Grid.Row="1" Grid.Column="1"  TextColor="Black" Text="{Binding Owner}"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" Text="Description" />
+                                <Label Grid.Row="2" Grid.Column="1"  TextColor="Black" Text="{Binding Description}"/>
+
+                                <Label Grid.Row="3" Grid.Column="0" Text="Ingredients" />
+                                <Label Margin="0, 0, 0, 5" Grid.Row="3" Grid.Column="1" TextColor="Black" Text="{Binding Ingredients}"/>
+
+                                <Label Grid.Row="4" Grid.Column="0" Text="Method/Steps" />
+                                <Label Grid.Row="4" Grid.Column="1" TextColor="Black"  Margin="5, 0, 0, 5" Text="{Binding Methods}"/>
+                            </Grid>
+                        </ScrollView>
+                    </StackLayout>
+                </RelativeLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

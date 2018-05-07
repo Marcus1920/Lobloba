@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Sellers.ProductDetails"
+             Title="{Binding ProductType}"
+             NavigationPage.HasBackButton="True">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <RelativeLayout BackgroundColor="LightGray"
+                >
+                    <Image 
+                        x:Name="BannerImage"
+                        Aspect="AspectFill" 
+                        Source="{Binding ProductPicture}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.5}"/>
+
+                    <StackLayout x:Name="DetailsLayout"
+                                 BackgroundColor="White"
+                                 Margin="10, 0, 10, 10"
+                                 RelativeLayout.HeightConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.5,
+                    Constant=15}"
+                                 RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                                 RelativeLayout.YConstraint="{ConstraintExpression
+                    Type=RelativeToView,
+                    ElementName=BannerImage,
+                    Property=Height,
+                    Factor=1,
+                    Constant=-15}">
+
+                        <StackLayout
+                            Orientation="Horizontal"
+                            BackgroundColor="LightSlateGray">
+
+                            <Label 
+                                Margin="25, 20, 0, 0"
+                                Text="Product Details"
+                                TextColor="White"
+                                FontSize="30"/>
+                        </StackLayout>
+
+                        <ScrollView>
+                            <Grid Margin="25, 5" RowSpacing="2.5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Product Type" />
+                                <Label Grid.Row="0" Grid.Column="1" FontAttributes="Bold" Text="{Binding ProductType}"/>
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="Grading" />
+                                <Label Grid.Row="1" Grid.Column="1"  TextColor="Goldenrod" Text="{Binding TransactionRating,  StringFormat='{0:F0}/5'}"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" Text="Description" />
+                                <Label Margin="0, 0, 0, 5" Grid.Row="2" Grid.Column="1" TextColor="Black" Text="{Binding Description}"/>
+
+                                <Label Grid.Row="3" Grid.Column="0" Text="City/Region" />
+                                <Label Grid.Row="3" Grid.Column="1"  TextColor="CadetBlue" Text="{Binding City}"/>
+
+                                <Label Grid.Row="4" Grid.Column="0" Text="Pickup Address" />
+                                <Label Grid.Row="4" Grid.Column="1"  TextColor="CadetBlue" Text="{Binding PickUpAddress}"/>
+
+                                <Label Grid.Row="5" Grid.Column="0" Text="Availability Times" />
+                                <Label Grid.Row="5" Grid.Column="1" TextColor="Black" Text="{Binding WeekTimes, StringFormat='Mon-Fri: {0}'}" />
+                                <Label Grid.Row="6" Grid.Column="1" TextColor="Black" Text="{Binding SatTimes, StringFormat='Sat: {0}'}" />
+                                <Label Grid.Row="7" Grid.Column="1" TextColor="Black" Text="{Binding SunTimes, StringFormat='Sun: {0}'}" />
+
+                                <Label Grid.Row="8" Grid.Column="0" Text="Sell By Date" />
+                                <Label Grid.Row="8" Grid.Column="1"  TextColor="Black" Text="{Binding SellByDate, StringFormat='{0:dd MMM yyyy}'}"/>
+
+                                <Label Grid.Row="9" Grid.Column="0" Text="Quantity Available" />
+                                <Label Grid.Row="9" Grid.Column="1" TextColor="Black" Text="{Binding Quantity, StringFormat='{0} kg'}"/>
+
+                                <Label Grid.Row="10" Grid.Column="0" Text="Price" />
+                                <Label Grid.Row="10" Grid.Column="1" TextColor="Green"  IsVisible="{Binding NotDonation}" Text="{Binding CostPerKg, StringFormat='R{0:F2}/kg'}"/>
+                                <Label Grid.Row="10" Grid.Column="1"  TextColor="Crimson" IsVisible="{Binding Donation}" Text="Donation"/>
+
+                                <Label Grid.Row="11" Grid.Column="0" Text="Packaging" />
+                                <Label Grid.Row="11" Grid.Column="1" TextColor="Black" Text="{Binding Packaging}"/>
+
+                                <Label Grid.Row="12" Grid.Column="0" Text="Payment Methods" />
+                                <Label Margin="0, 0, 0, 5" Grid.Row="12" Grid.Column="1"  TextColor="Black" Text="{Binding PaymentMethods}"/>
+                            </Grid>
+                        </ScrollView>
+                    </StackLayout>
+
+                    <Button
+                        Text="ACTIONS"
+                        TextColor="White"
+                        BackgroundColor="SteelBlue"
+                        Clicked="Button_OnClicked"
+                        RelativeLayout.XConstraint="{ConstraintExpression
+                    Type=RelativeToView,
+                    ElementName=DetailsLayout,
+                    Property=Width,
+                    Factor=1,
+                    Constant=-70}"
+                        RelativeLayout.YConstraint="{ConstraintExpression
+                    Type=RelativeToView,
+                    ElementName=DetailsLayout,
+                    Property=Height,
+                    Factor=1,
+                    Constant=40}" />
+                </RelativeLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

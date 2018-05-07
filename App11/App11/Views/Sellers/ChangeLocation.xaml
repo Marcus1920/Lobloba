@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Sellers.ChangeLocation" 
+    Title="Set Default Pick Up Point">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Margin="25, 25">
+            <ActivityIndicator IsRunning="True" x:Name="Indicator" />
+            <Label HorizontalOptions="Center" IsVisible="False" x:Name="TitleLabel" FontAttributes="Bold" Text="New geographical position:" />
+            <Label HorizontalOptions="Center" x:Name="IndicatorLabel" Text="Getting current location. Please wait..." />
+            <Button TextColor="White" Clicked="Save_OnClicked" BackgroundColor="CadetBlue" Text="Save" IsVisible="False" x:Name="Save" />
+            <Button Text="Cancel" Clicked="Cancel_OnClicked" x:Name="Cancel" IsVisible="False" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

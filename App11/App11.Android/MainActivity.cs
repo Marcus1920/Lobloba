@@ -6,10 +6,14 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Plugin.LocalNotifications;
+using Acr.UserDialogs;
+using ImageCircle.Forms.Plugin.Droid;
+using Plugin.Permissions;
 
 namespace App11.Droid
 {
-    [Activity(Label = "App11", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Food For Us", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -20,8 +24,17 @@ namespace App11.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            UserDialogs.Init(this);
+            ImageCircleRenderer.Init();
+            LocalNotificationsImplementation.NotificationIconId = Resource.Drawable.logo;
             LoadApplication(new App());
         }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
     }
 }
 

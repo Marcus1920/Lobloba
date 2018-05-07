@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Sellers.TransactionDetails"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+       Title="{Binding FullNames}"
+             NavigationPage.HasBackButton="True">
+    <ContentPage.Content>
+        <ScrollView>
+            <RelativeLayout BackgroundColor="LightGray">
+                <Image 
+                    x:Name="BannerImage"
+                    Aspect="AspectFill" 
+                    Source="{Binding ProductPicture}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression
+                        Type=RelativeToParent,
+                        Property=Width,
+                        Factor=1}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression
+                        Type=RelativeToParent,
+                        Property=Height,
+                        Factor=0.5}"/>
+
+                <StackLayout x:Name="DetailsLayout"
+                             BackgroundColor="White"
+                             Margin="10, 0, 10, 10"
+                             RelativeLayout.HeightConstraint="{ConstraintExpression
+                                Type=RelativeToParent,
+                                Property=Height,
+                                Factor=0.5,
+                                Constant=15}"
+                             RelativeLayout.WidthConstraint="{ConstraintExpression
+                                Type=RelativeToParent,
+                                Property=Width,
+                                Factor=1}"
+                             RelativeLayout.YConstraint="{ConstraintExpression
+                                Type=RelativeToView,
+                                ElementName=BannerImage,
+                                Property=Height,
+                                Factor=1,
+                                Constant=-20}">
+
+                    <StackLayout
+                        Orientation="Horizontal"
+                        BackgroundColor="LightSlateGray">
+
+                        <Label 
+                            Margin="25, 20, 0, 0"
+                            Text="Transaction Details"
+                            TextColor="White"
+                            FontSize="30"/>
+                    </StackLayout>
+
+                    <ActivityIndicator 
+                        IsVisible="False" 
+                        IsRunning="True" 
+                        x:Name="Loader"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+
+                    <ScrollView x:Name="Comment"
+                                IsVisible="False"
+                                Margin="20">
+                        <StackLayout>
+                            <Label Text="Please leave a comment for your response: "></Label>
+                            <Editor HeightRequest="75"
+                                    x:Name="CommentEditor"
+                                    BackgroundColor="LightBlue"
+                                    Text="No comment.."/>
+                            <Button Text="Submit" 
+                                    TextColor="White" 
+                                    BackgroundColor="CadetBlue"
+                                    Clicked="Button_OnClicked"/>
+                        </StackLayout>
+                    </ScrollView>
+
+                    <ScrollView x:Name="Details">s
+                        <Grid Margin="25, 5" RowSpacing="2.5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Text="Tranaction Date" />
+                            <Label Grid.Row="0" Grid.Column="1" TextColor="CadetBlue" Text="{Binding Created_at, StringFormat='{0:dd MMM yyyy - HH:mm}'}" />
+
+                            <Label Grid.Row="1" Grid.Column="0" Text="Description" />
+                            <Label Grid.Row="1" Grid.Column="1"  TextColor="Black" Text="{Binding Description }"/>
+
+                            <Label Grid.Row="2" Grid.Column="0" Text="Customer Name" />
+                            <Label Grid.Row="2" Grid.Column="1" FontAttributes="Bold" Text="{Binding FullNames}"/>
+
+                            <Label Grid.Row="3" Grid.Column="0" Text="Email" />
+                            <Label Grid.Row="3" Grid.Column="1"  TextColor="Black" Text="{Binding Email}"/>
+
+                            <Label Grid.Row="4" Grid.Column="0" Text="Cellphone" />
+                            <Label Grid.Row="4" Grid.Column="1"  TextColor="Black" Text="{Binding Cellphone}"/>
+
+                            <Label Grid.Row="5" Grid.Column="0" Text="Location" />
+                            <Label Grid.Row="5" Grid.Column="1"  TextColor="Black" Text="{Binding Location}"/>
+
+                            <Label Grid.Row="6" Grid.Column="0" Text="Mode of Transport" />
+                            <Label Grid.Row="6" Grid.Column="1"  TextColor="Black" Text="{Binding DescriptionOfAcces}"/>
+
+                            <Label Grid.Row="7" Grid.Column="0" Text="Transaction Status" />
+                            <Label Grid.Row="7" Grid.Column="1" x:Name="StatusLabel" />
+
+                            <StackLayout Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Button x:Name="CloseButton" HorizontalOptions="Center" TextColor="White" BackgroundColor="CadetBlue" Text="Close Transaction" Clicked="CloseButton_OnClicked" />
+
+                                <Grid BackgroundColor="Transparent">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button x:Name="AcceptButton" HorizontalOptions="End" Grid.Row="0" Grid.Column="0" TextColor="White" BackgroundColor="CadetBlue" Text="Accept" Clicked="AcceptButton_OnClicked" />
+                                    <Button x:Name="DeclineButton" HorizontalOptions="Start" Grid.Row="0" Grid.Column="1" Text="Decline" Clicked="DeclineButton_OnClicked" />
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                    </ScrollView>
+                </StackLayout>
+
+                <StackLayout
+                    BackgroundColor="Transparent"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression
+                                Type=RelativeToView,
+                                ElementName=BannerImage,
+                                Property=Width,
+                                Factor=1}"
+                    RelativeLayout.YConstraint="{ConstraintExpression
+                        Type=RelativeToView,
+                        ElementName=BannerImage,
+                        Property=Height,
+                        Constant=-150}">
+
+                    <ic:CircleImage 
+                        HorizontalOptions="Center"
+                        WidthRequest="150"
+                        HeightRequest="150"
+                        Aspect="AspectFill"
+                        Source="{Binding ProfilePicture}"/>
+                </StackLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

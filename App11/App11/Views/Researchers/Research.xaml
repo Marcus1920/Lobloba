@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Researchers.Research"
+           xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+			 BackgroundImage="darkblue.png"
+             
+     Title="Start Research">
+    <ScrollView>
+        <StackLayout  HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="FillAndExpand">
+
+            <Image x:Name="UserIcon" HeightRequest="50"  WidthRequest="50" HorizontalOptions="Center" VerticalOptions="Center" />
+
+            <Label VerticalOptions="Center" Text="Product Name: " />
+
+            <Grid ColumnSpacing="2.5" VerticalOptions="Start">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+
+                <Label Grid.Row="0" 
+                           Grid.Column="0" 
+                         HorizontalOptions="Start"
+                       x:Name="productR"/>
+
+
+                <Button Grid.Row="0" 
+                            Grid.Column="1" 
+                            x:Name="ResearchProduct" 
+                            BackgroundColor="LightGray"
+                            HorizontalOptions="End"
+                        Text="Nature of Research"
+                    Clicked="GetProductType_OnItemSelected" />
+
+            </Grid>
+            <StackLayout Padding="5,10">
+                <Label Text="Research Summary" TextColor="White"></Label>
+                <Editor   HeightRequest="100" TextColor="Black"  BackgroundColor="White" x:Name="Summary" >
+
+
+                </Editor>
+
+            </StackLayout>
+            <StackLayout Padding="5,10">
+                <Label Text="Research Notes" TextColor="White"></Label>
+                <Editor  
+                    x:Name="Note" HeightRequest="100" BackgroundColor="White" TextColor="Black" >
+
+
+                </Editor>
+            </StackLayout>
+
+            <StackLayout>
+
+                <Label x:Name="api_long" IsVisible="False" />
+                <Label x:Name="api_lat" IsVisible="False"/>
+
+            </StackLayout>
+
+
+
+
+            <Image x:Name="MainImage" HorizontalOptions="StartAndExpand"></Image>
+
+            <Label x:Name="PathLabel" IsVisible="False"></Label>
+
+
+
+
+
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="TakePicture" Clicked="TakePicture_Clicked" Grid.Row="0" Grid.Column="0" Image="camera.png"  BackgroundColor="Transparent"/>
+                <Button x:Name="Save" Clicked="Save_Clicked" BorderRadius="20"  Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" Image="quickpic.png"/>
+
+            </Grid>
+            <Button x:Name="SaveResearch" Clicked="SaveResearch_Clicked" Text="Save" />
+        </StackLayout>
+
+
+    </ScrollView>
+</ContentPage>

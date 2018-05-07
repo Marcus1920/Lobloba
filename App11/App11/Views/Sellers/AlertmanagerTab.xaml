@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Sellers.AlertmanagerTab"
+              xmlns:seller="clr-namespace:App11.Views.Sellers;assembly=App11"
+
+            Title="Food For Us">
+    <!--Pages can be added as references or inline-->
+    <seller:InterestProduct  Icon="if_Create_132514.png"/>
+    <seller:EditAlertmanager  Icon="NOTIFICATIONS.png"/>
+
+</TabbedPage>

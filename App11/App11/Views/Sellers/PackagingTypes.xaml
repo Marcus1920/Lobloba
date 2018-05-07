@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Sellers.PackagingTypes" Title="Select Packaging Type">
+    <StackLayout>
+        <Label x:Name="notFound" TextColor="Gray" IsVisible="false" Margin="10" />
+
+        <ListView x:Name="TypesListView"
+                  HasUnevenRows="True"
+                  IsPullToRefreshEnabled="True"
+                  IsVisible="False"
+                  Refreshing="TypesListView_OnRefreshing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Margin="10" FontSize="20" VerticalOptions="Center" Text="{Binding Name}" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

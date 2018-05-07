@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.auth.Registration" BackgroundImage="login.png">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BorderColor" Value="White" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="BorderWidth" Value="5" />
+                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="TextColor" Value="Teal" />
+
+            </Style>
+
+            <Style x:Key="buttonterms" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BorderColor" Value="White" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="BorderWidth" Value="5" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="WidthRequest" Value="400" />
+                <Setter Property="TextColor" Value="White" />
+
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+    <StackLayout  HorizontalOptions="FillAndExpand" Padding="30" VerticalOptions="FillAndExpand">
+
+
+        <Image x:Name="UserIcon"  HeightRequest="75"  WidthRequest="75" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+
+        <ScrollView>
+            <StackLayout>
+
+                <Grid>
+
+                    <Entry  
+                    Text="{Binding Name}"
+                    PlaceholderColor="White"
+                    x:Name="name"
+                    Placeholder="Firstname "
+                      />
+
+                </Grid>
+
+                <Grid>
+
+                    <Entry  
+                PlaceholderColor="White"    
+                x:Name="surname"
+                Text="{Binding Surname}"
+                Placeholder="Surname"
+                 />
+                </Grid>
+
+
+                <Entry  TextColor="White"
+                    x:Name="id_no"
+                    PlaceholderColor="White"
+                    Text="{Binding Idnumber}"
+                    Placeholder=" ID number" 
+                    Keyboard="Numeric"/>
+
+
+
+                <Entry  
+                    Text="{Binding Email}"
+                    PlaceholderColor="White"
+                    x:Name="email"
+                    Placeholder="Email" 
+                    Keyboard="Email" />
+
+
+                <Entry  TextColor="White"
+                     Text="{Binding Email}"
+                     PlaceholderColor="White"
+                     x:Name="Cellphone"
+                     Placeholder="Cellphone" 
+                     Keyboard="Telephone" 
+                    />
+
+
+                <Grid>
+                    <Picker Title="Notification Radius"  SelectedItem="{Binding TraveleRadius}" BackgroundColor="White" x:Name="Travelradius">
+                        <Picker.Items>
+                            <x:String>10 Km</x:String>
+                            <x:String>20 km</x:String>
+                            <x:String>30 km</x:String>
+                            <x:String>40 km</x:String>
+                            <x:String>50 km</x:String>
+                            <x:String>60 km</x:String>
+                            <x:String>70 km</x:String>
+                            <x:String>80 km</x:String>
+                            <x:String>90 km</x:String>
+                            <x:String>100 km</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Grid>
+
+                <Grid>
+                    <Picker Title=" Select Group " SelectedItem="{Binding Intrest}" BackgroundColor="White" x:Name="Interests">
+                        <Picker.Items>
+                            <x:String>Seller</x:String>
+                            <x:String>Buyer</x:String>
+                            <x:String>Researcher</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                </Grid>
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Grid.Column="0" >
+
+                        <Label FontSize="Medium">
+                            <Label.FormattedText>
+                                <FormattedString>
+
+
+                                    <Span Text="Long :"  ForegroundColor="Red"/>
+                                    <Span  x:Name="api_long" ForegroundColor="White"  FontAttributes="Bold"  FontSize="Small" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+
+
+                    </Grid>
+                    <Grid Grid.Column="1" >
+                        <Label FontSize="Medium">
+                            <Label.FormattedText>
+                                <FormattedString>
+
+
+                                    <Span Text="Lat :"  ForegroundColor="Red"/>
+                                    <Span  x:Name="api_lat" ForegroundColor="White"  FontAttributes="Bold"  FontSize="Small" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+
+                    </Grid>
+                </Grid>
+
+
+
+
+
+
+
+                <Label  Text="Address and Description" TextColor="White"   FontSize="Medium"/>
+                <Editor  BackgroundColor="White" 
+                    
+                     Text="{Binding Location}"
+                     x:Name="location"
+                    HeightRequest="100"
+                    />
+                <Label x:Name="mylocation" ></Label>
+
+
+
+                <Picker Title=" Mode of Transport" SelectedItem="{Binding Intrest}" BackgroundColor="White" x:Name="Description">
+                    <Picker.Items>
+                        <x:String>Tar Road – Any Vehicle</x:String>
+                        <x:String>Dirt Road – Any Vehicle</x:String>
+                        <x:String>Dirt Road – Bakkie or Truck (4x4 rainy season)</x:String>
+                        <x:String>Dirt Road – no large trucks</x:String>
+                        <x:String>Dirt Road – 4 x4</x:String>
+                        <x:String>Dirt Track – 4x4 only</x:String>
+                    </Picker.Items>
+                </Picker>
+
+
+
+                <Button Text="termes" x:Name="termes"  Style="{StaticResource buttonterms}" Clicked="termes_Clicked"/>
+                <Button  x:Name="register" Style="{StaticResource buttonStyle}"  Text="Next"
+                     
+                    
+                  Clicked="register_Clicked"
+                 />
+
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</ContentPage>

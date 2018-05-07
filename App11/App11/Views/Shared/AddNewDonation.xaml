@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Shared.AddNewDonation"
+       Title="New Donation">
+    <ContentPage.Content>
+        <StackLayout>
+            <ActivityIndicator IsRunning="True" IsVisible="False" x:Name="loader" />
+            <Label IsVisible="False" x:Name="label" Text="Contacting server. Please wait..." HorizontalOptions="Center" />
+            <TableView x:Name="table" Intent="Form" HasUnevenRows="True">
+                <TableRoot>
+                    <TableSection Title="Product Details">
+                        <ViewCell>
+                            <StackLayout HeightRequest="50" Orientation="Horizontal" Padding="13, 0">
+                                <Label VerticalOptions="Center" Text="Product Type: " />
+                                <Label x:Name="ProductType" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                                <Button HorizontalOptions="End" VerticalOptions="Center" Text="Select Type" Clicked="GetProductType_OnClicked" />
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout HeightRequest="150" Orientation="Horizontal" Padding="13, 0">
+                                <StackLayout VerticalOptions="Center">
+                                    <Label Text="Product Picture: " />
+                                    <Button Text="Capture Image" Clicked="TakePicture_Clicked" />
+                                    <Button Text="Select Existing" Clicked="BrowsePicture_Clicked" />
+                                </StackLayout>
+                                <Image Source="image_not_found.jpg" HorizontalOptions="EndAndExpand" VerticalOptions="Center" x:Name="Image" HeightRequest="150" WidthRequest="150" Aspect="AspectFill" />
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout HeightRequest="50" Orientation="Horizontal" Padding="13, 0">
+                                <Label VerticalOptions="Center" Text="{Binding Source={x:Reference ProductRating}, Path=Value, StringFormat='Grading: {0:F0}/5 '}" />
+                                <Slider VerticalOptions="Center" WidthRequest="200" x:Name="ProductRating" Maximum="5" Minimum="1" HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+
+                        <EntryCell x:Name="ProductDescription" Label="Description: " Placeholder="Description here..." />
+                    </TableSection>
+
+                    <TableSection Title="Location">
+                        <EntryCell x:Name="ProductCity" Label="City/Region: " Placeholder="e.g. Durban" />
+                        <EntryCell x:Name="PickupAddr" Label="Pickup Address: " Placeholder="e.g. 1 Example Street..." />
+                    </TableSection>
+
+                    <TableSection Title="Daily Availability Times">
+                        <ViewCell>
+                            <Grid Padding="13, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center" Text="Monday to Friday: " />
+                                <TimePicker Grid.Row="0" Grid.Column="1" HorizontalOptions="StartAndExpand" x:Name="TimeFrom" TextColor="Black" VerticalOptions="Center" />
+                                <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Text="To: " />
+                                <TimePicker Grid.Row="0" Grid.Column="3" HorizontalOptions="StartAndExpand" x:Name="TimeTo" VerticalOptions="Center" />
+
+                                <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center" Text="Saturday: " />
+                                <TimePicker Grid.Row="1" Grid.Column="1" HorizontalOptions="StartAndExpand" x:Name="TimeFromSat" TextColor="Black" VerticalOptions="Center" />
+                                <Label Grid.Row="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Text="To: " />
+                                <TimePicker Grid.Row="1" Grid.Column="3" HorizontalOptions="StartAndExpand" x:Name="TimeToSat" VerticalOptions="Center" />
+
+                                <Label Grid.Row="2" Grid.Column="0" VerticalOptions="Center" Text="Sunday: " />
+                                <TimePicker Grid.Row="2" Grid.Column="1" HorizontalOptions="StartAndExpand" x:Name="TimeFromSun" TextColor="Black" VerticalOptions="Center" />
+                                <Label Grid.Row="2" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Text="To: " />
+                                <TimePicker Grid.Row="2" Grid.Column="3" HorizontalOptions="StartAndExpand" x:Name="TimeToSun" VerticalOptions="Center" />
+
+                                <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" Orientation="Horizontal">
+                                    <Label Text="Sell By Date: " />
+                                    <DatePicker Format="d MMM yyyy" x:Name="SellBy" TextColor="Black" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+
+                    <TableSection Title="Quantity and Packaging">
+                        <EntryCell x:Name="ProductQuantity" Label="Quantity Available (in kg): " Placeholder="0" Keyboard="Numeric" />
+                        <ViewCell>
+                            <StackLayout HeightRequest="50" Orientation="Horizontal" Padding="13, 0">
+                                <Label VerticalOptions="Center" Text="Packaging Type: " />
+                                <Label x:Name="PackagingType" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                                <Button HorizontalOptions="End" VerticalOptions="Center" Text="Select Type" Clicked="GetPackagingType_OnClicked" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+
+                    <TableSection Title="Save Data">
+                        <ViewCell>
+                            <Button VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" Text="Save" BackgroundColor="CadetBlue" TextColor="White" Clicked="Save_OnClicked" />
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

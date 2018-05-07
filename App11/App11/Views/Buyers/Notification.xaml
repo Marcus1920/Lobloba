@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Buyers.Notification"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             Title="Alerts">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  Icon="cart.png" x:Name="cart" Activated="ToolbarItem_OnActivated" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content >
+        <StackLayout>
+            <Label x:Name="notFound" TextColor="Gray" IsVisible="false" Margin="10" />
+
+            <ListView x:Name="TransactionsListView"
+                      HasUnevenRows="True"
+                      IsPullToRefreshEnabled="True"
+                      IsVisible="False"
+                      Refreshing="TransactionsListView_OnRefreshingRefreshingAsync"
+                      BackgroundColor="LightGray"
+                      SeparatorVisibility="None"
+                      SeparatorColor="AliceBlue"
+                      
+                  ItemsSource="{Binding .}"
+                  ItemTapped="OnHistoryTappedAsync">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--
+                    <ImageCell Text="{Binding Name}" Detail="{Binding Description}" DetailColor="Gray">
+                    </ImageCell>
+                    -->
+                        <ViewCell>
+                            <Grid Margin="0, 5, 0, 5" Padding="5" BackgroundColor="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="75" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <abstractions:CircleImage
+                                    WidthRequest="20"
+                                    HeightRequest="20"
+                                     
+                                    Aspect="AspectFill"
+                                    Source="{Binding productPicture}"
+                                />
+
+                                <StackLayout Grid.Row="0" Grid.Column="1">
+                                    <StackLayout>
+                                        <Label FontAttributes="Bold" Text="{Binding ProductName}" />
+                                        <Label Text="{Binding Message}" />
+                                        <Label TextColor="CadetBlue" Text="{Binding created_at}" />
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="{Binding StatusColor}" Text="{Binding TransactionName}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

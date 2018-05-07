@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Sellers.EditProduct"
+          Title="New Product">
+    <ContentPage.Content>
+        <TableView Intent="Form" HasUnevenRows="True">
+            <TableRoot>
+                <TableSection Title="Product Details">
+                    <ViewCell>
+                        <StackLayout HeightRequest="50" Orientation="Horizontal" Padding="13, 0">
+                            <Label VerticalOptions="Center" Text="Product Type: " />
+                            <Label Text="{Binding ProductType}" x:Name="ProductType" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                            <Button x:Name="GetProductType" HorizontalOptions="End" VerticalOptions="Center" Text="Select Type" />
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout HeightRequest="150" Orientation="Horizontal" Padding="13, 0">
+                            <StackLayout VerticalOptions="Center">
+                                <Label Text="Product Picture: " />
+                                <Button x:Name="TakePic" Text="Capture Image" />
+                                <Button x:Name="BrowsePic" Text="Select Existing" />
+                            </StackLayout>
+                            <Image Source="{Binding ProductPicture}" HorizontalOptions="EndAndExpand" VerticalOptions="Center" x:Name="Image" HeightRequest="150" WidthRequest="150" Aspect="AspectFill" />
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout HeightRequest="50" Orientation="Horizontal" Padding="13, 0">
+                            <Label VerticalOptions="Center" Text="{Binding Source={x:Reference ProductRating}, Path=Value, StringFormat='Rating: {0:F1}/5 '}" />
+                            <Slider Value="{Binding TransactionRating}" VerticalOptions="Center" WidthRequest="200" x:Name="ProductRating" Maximum="5" Minimum="1" HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+
+                    <EntryCell Text="{Binding Description}" x:Name="ProductDescription" Label="Description: " Placeholder="Description here..." />
+                </TableSection>
+
+                <TableSection Title="Location">
+                    <EntryCell Text="{Binding Country}" x:Name="ProductCountry"  Label="Country: " Placeholder="e.g. South Africa" />
+
+                    <EntryCell Text="{Binding City}" x:Name="ProductCity" Label="City/Region: " Placeholder="e.g. Knysna" />
+                </TableSection>
+
+                <TableSection Title="Packaging">
+                    <ViewCell>
+                        <StackLayout HeightRequest="50" Orientation="Horizontal" Padding="13, 0">
+                            <Label VerticalOptions="Center" Text="Packaging Type: " />
+                            <Label Text="{Binding Packaging}" x:Name="PackagingType" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                            <Button x:Name="GetPackaging" HorizontalOptions="End" VerticalOptions="Center" Text="Select Type" />
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+
+                <TableSection Title="Quantity and Pricing (Selling Price: R0 = Donation)">
+                    <EntryCell Text="{Binding Quantity}" x:Name="ProductQuantity" Label="Quantity (in kg): " Placeholder="0" Keyboard="Numeric" />
+                    <EntryCell Text="{Binding CostPerKg}" x:Name="ProductPrice" Label="Selling price (per kg): R" Placeholder="0.00" Keyboard="Numeric" />
+                </TableSection>
+
+                <TableSection Title="Save Data">
+                    <ViewCell>
+                        <Button x:Name="Save" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" Text="Save" BackgroundColor="CadetBlue" TextColor="White" />
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

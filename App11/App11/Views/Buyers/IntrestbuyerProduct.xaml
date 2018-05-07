@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Buyers.IntrestbuyerProduct">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form" HasUnevenRows="True">
+                <TableRoot>
+                    <TableSection Title="Select  First  Alert ">
+                        <ViewCell>
+                            <StackLayout HeightRequest="50" Orientation="Horizontal" Padding="13, 0">
+                                <Label VerticalOptions="Center" Text="Product Name: " />
+
+                                <Button HorizontalOptions="End" VerticalOptions="Center" Text="Select Product" Clicked="Button_OnClickedductType_OnClicked" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <Label  TextColor="Black"  VerticalOptions="Center" Text="Intrested In" />
+                            <Label x:Name="ProductTypes" Text="{Binding ProductType}" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+
+                        </ViewCell>
+                    </TableSection>
+
+
+
+
+
+                    <TableSection Title="Select  Third  Alert">
+                        <ViewCell>
+                            <StackLayout HeightRequest="50" Orientation="Horizontal" Padding="13, 0">
+                                <Label VerticalOptions="Center" Text="Product Name: " />
+
+                                <Button HorizontalOptions="End" VerticalOptions="Center" Text="Select Product" Clicked="Button_OnClickedductType_OnClickedSecondSelection" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <Label  TextColor="Black"  VerticalOptions="Center" Text="Intrested In" />
+                            <Label x:Name="ProductTypetwo" Text="{Binding ProductType}" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+
+                        </ViewCell>
+                    </TableSection>
+
+
+
+
+                    
+                    
+                    <TableSection Title="Select  Second  Alert">
+                        <ViewCell>
+                            <StackLayout HeightRequest="50" Orientation="Horizontal" Padding="13, 0">
+                                <Label VerticalOptions="Center" Text="Product Name: " />
+
+                                <Button HorizontalOptions="End" VerticalOptions="Center" Text="Select Product" Clicked="Button_OnClickedductType_OnClicked_ThirdSection" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <Label  TextColor="Black"  VerticalOptions="Center" Text="Intrested In" />
+                            <Label x:Name="ProductTypesthree" Text="{Binding ProductType}" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+
+                        </ViewCell>
+                    </TableSection>
+
+
+
+
+                    <TableSection Title="Save Data">
+                        <ViewCell>
+                            <Button VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150"   Text="Save" BackgroundColor="CadetBlue" TextColor="White" Clicked="Save_OnClickedicked" />
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

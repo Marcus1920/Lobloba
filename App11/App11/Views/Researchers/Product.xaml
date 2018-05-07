@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Researchers.Product">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <SearchBar TextChanged="OnTextChanged" Placeholder="Search by product name..."/>
+            <ActivityIndicator x:Name="Indicator" IsRunning="True" IsVisible="False" />
+            <Label x:Name="notFound" TextColor="Gray" IsVisible="false" Margin="10" />
+
+            <ListView x:Name="ProductsListView"
+                  HasUnevenRows="True"
+                  IsPullToRefreshEnabled="True"
+                  IsVisible="False"
+                  Refreshing="ProductsListView_OnRefreshing">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+
+                            <Label Margin="10" FontSize="20" TextColor="Black" VerticalOptions="Center" Text="{Binding Name}" />
+
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+
+
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="App11.Views.Sellers.TransactionList" 
+            Title="TRANSACTIONS">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add New Post" Icon="if_Create_132514.png" Activated="ToolbarItem_OnActivated"  />
+        <ToolbarItem Text="Change Default Pick Up Point" Icon="Location.png"  Activated="ChangePickup_OnActivated"  />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="notFound" TextColor="Gray" IsVisible="false" Margin="10" />
+
+            <ListView x:Name="TransactionsListView"
+                      HasUnevenRows="True"
+                      IsPullToRefreshEnabled="True"
+                      IsVisible="False"
+                      Refreshing="TransactionsListView_OnRefreshing"
+                      BackgroundColor="LightGray"
+                      SeparatorVisibility="None"
+                      ItemSelected="TransactionsListView_OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="0, 5, 0, 5" Padding="5" BackgroundColor="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="75" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <ic:CircleImage 
+                                    WidthRequest="80"
+                                    HeightRequest="80"
+                                    Aspect="AspectFill"
+                                    Source="{Binding ProfilePicture}"/>
+                                <StackLayout Grid.Row="0" Grid.Column="1">
+                                    <StackLayout>
+                                        <Label FontAttributes="Bold" Text="{Binding FullNames}" />
+                                        <Label Text="{Binding Description}" />
+                                        <Label TextColor="CadetBlue" Text="{Binding Created_at, StringFormat='{0:dd MMM yyyy}'}" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="{Binding StatusColor}" Text="{Binding TransactionName}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

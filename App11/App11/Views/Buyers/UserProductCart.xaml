@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Buyers.UserProductCart"
+               xmlns:viewModel="clr-namespace:App11.ViewModels.Buyers;assembly=App11"
+          xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+            Title="My Cart">
+    <ContentPage.BindingContext>
+
+        <viewModel:CartProductViewModel/>
+
+    </ContentPage.BindingContext>
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BorderColor" Value="Transparent" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="WidthRequest" Value="30" />
+
+
+            </Style>
+
+            <Style x:Key="buttonterms" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BorderColor" Value="White" />
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="BorderWidth" Value="5" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="WidthRequest" Value="400" />
+                <Setter Property="TextColor" Value="White" />
+
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+
+    <ListView  ItemsSource="{Binding UsersCartList}" x:Name="usersCart"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  Margin="10,10,10,10"
+                  ItemTapped="usersCart_ItemTapped">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+
+
+
+                <!--
+                    <ImageCell Text="{Binding Name}" Detail="{Binding Description}" DetailColor="Gray">
+                    </ImageCell>
+                    -->
+                <ViewCell>
+                    <Grid RowSpacing="10" Margin="0,0,0,10" BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75" />
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding productPicture}" Margin="5,5,0,5" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+
+                        <StackLayout Margin="5,5,5,5" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding productName}" x:Name="productName" FontSize="Small" TextColor="#003B48" FontAttributes="Bold"/>
+                            <Label Text="{Binding quantity,StringFormat='QTY: {0}'}" TextColor="Gray" FontSize="Small" Margin="0,0,0,15"/>
+
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="2" Orientation="Horizontal">
+                            <Label Text="{Binding created_at}" FontSize="Small" HorizontalOptions="End" VerticalOptions="End"/>
+                            <Button
+                       
+                                Style="{StaticResource buttonStyle}"
+                        TextColor="White"
+                                FontSize="Micro"
+                          
+                             Clicked="Remove_Clicked_1"
+                         x:Name="Remove"
+                              Image="remove.png"
+                        BackgroundColor="Transparent"
+                     
+                       />
+                        </StackLayout>
+
+
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>

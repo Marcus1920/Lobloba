@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Researchers.ResearchApi.AddNewResearch">
+    <ContentPage.Content>
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection Title="Research Details">
+                    <EntryCell x:Name="ResearchFor" Label="Product Name " Placeholder="e.g. Apples" />
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="13, 0">
+                            <Label x:Name="ImagePath" VerticalOptions="Center" Text="Product Picture: " />
+                            <Button VerticalOptions="Center" Text="Upload Picture" Clicked="Upload_OnClicked" HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+
+                    <EntryCell x:Name="NatureOfBusiness" Label="Nature of Business: " Placeholder="" />
+                    <EntryCell x:Name="SummaryBox" Label="Subject  Summary : " Placeholder="Summary here..." />
+                    <EntryCell x:Name="ResearchNotes" Label="Details Notes: " Placeholder="" />
+
+                </TableSection>
+
+                <TableSection Title="Save Data">
+                    <ViewCell>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" Text="Save" BackgroundColor="CadetBlue" TextColor="White" Clicked="Save_OnClicked" />
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+
+</ContentPage> 

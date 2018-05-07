@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App11.Views.Researchers.ResearchApi.ResearchList">
+    BackgroundImage="darkblue.png"
+      Title="My Research">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add New Post" Order="Secondary" Activated="ToolbarItem_OnActivated"  />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="notFound" Text="No new Research to display." TextColor="Gray" IsVisible="false" Margin="10" />
+
+            <ListView x:Name="ResearchListView" RowHeight="60" HasUnevenRows="True" ItemSelected="OnItemSelected">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="10" Padding="5" BackgroundColor="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="200" />
+
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFill" Source="{Binding imageUrl}" />
+                                <StackLayout Grid.Row="0" Grid.Column="1">
+                                    <StackLayout  VerticalOptions="StartAndExpand">
+
+
+                                        <Label FontAttributes="None" Text="{Binding natureOfBusiness}"/>
+                                        <Label></Label>
+
+                                        <Label FontAttributes="None" Text="{Binding summaryBox}" />
+                                        <Label></Label>
+
+                                        <Label FontAttributes="None" Text="{Binding researchNotes}" />
+
+
+
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
