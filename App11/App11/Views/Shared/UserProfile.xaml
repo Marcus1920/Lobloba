@@ -75,7 +75,7 @@
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="60" />
                                 <ColumnDefinition Width="*" />
 
                             </Grid.ColumnDefinitions>
@@ -96,15 +96,10 @@
                             <Editor Grid.Row="4" Grid.Column="1" TextColor="Black" x:Name="phone" Text="{Binding Cellphone}" IsVisible="True"/>
 
                             <Label Grid.Row="5" Grid.Column="0" Text="Email Address" />
-                            <Editor Grid.Row="5" Grid.Column="1"  TextColor="Black" x:Name="email" Text="{Binding Email}" IsVisible="True"/>
+                            <Editor Grid.Row="5"    Grid.Column="1"  TextColor="Black" x:Name="email" Text="{Binding Email}" IsVisible="True"/>
 
                             <Label Grid.Row="6" Grid.Column="0" Text="Primary Interest" />
                             <Label Grid.Row="6" Grid.Column="1"  TextColor="Black" Text="{Binding Interest}"/>
-
-
-
-
-
 
                         </Grid>
 

@@ -1,15 +1,17 @@
-﻿using App11.Models;
-using App11.Services.ShareService;
-using App11.Views.Buyers;
+﻿
+using App11.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using App11.Services.ShareService;
+using App11.ViewModels.Buyers.Sellers;
+using App11.Views.Buyers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 
 namespace App11.Views.Sellers
 {
@@ -22,10 +24,14 @@ namespace App11.Views.Sellers
         public SelelersChat()
         {
             InitializeComponent();
+
+            BindingContext = new SellerDeleteModelView(Navigation);
         }
-        private void TransactionsListView_OnRefreshingtView_OnRefreshing(object sender, EventArgs e)
+        private async void TransactionsListView_OnRefreshingtView_OnRefreshing(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            await GetChatListing();
+            TransactionsListView.EndRefresh();
+
         }
 
         private async void OnHistoryTappedAsync(object sender, ItemTappedEventArgs e)
@@ -85,5 +91,14 @@ namespace App11.Views.Sellers
             Navigation.PushAsync(new AddNewProduct());
         }
 
+        private void Remove_OnClickeded_1(object sender, EventArgs e)
+        {
+            var Remove_Clicked = sender as Button;
+            var CartProduc = Remove_Clicked?.BindingContext as ChatListModel;
+
+            var vm = BindingContext as SellerDeleteModelView;
+
+            vm.RemoveComand.Execute(CartProduc);
+        }
     }
 }

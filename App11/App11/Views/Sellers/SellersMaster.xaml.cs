@@ -1,4 +1,5 @@
-﻿using Plugin.Settings;
+﻿using App11.Views.auth;
+using Plugin.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace App11.Views.Sellers
                     if (await DisplayAlert("Logout?", "Are you sure you want to logout?", "Yes", "No"))
                     {
                         CrossSettings.Current.AddOrUpdateValue("userlogin", "false");
-                        await Navigation.PopModalAsync();
+                        await Navigation.PushModalAsync(new Login());
                     }
 
                 });

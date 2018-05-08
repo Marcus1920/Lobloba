@@ -79,7 +79,7 @@ namespace App11.Views.Buyers
 
 
             var client = new HttpClient();
-            var response = await client.PostAsync("http://dev.foodforus.cloud/public/api/v1/conversation", values);
+            var response = await client.PostAsync("http://system.foodforus.cloud/api/v1/conversation", values);
             var respond = await response.Content.ReadAsStringAsync();
             size = respond.Length;
 
@@ -99,7 +99,7 @@ namespace App11.Views.Buyers
 
             });
             var client = new HttpClient();
-            var response = await client.PostAsync("http://dev.foodforus.cloud/public/api/v1/conversation", values);
+            var response = await client.PostAsync("http://system.foodforus.cloud/api/v1/conversation", values);
             var respond = await response.Content.ReadAsStringAsync();
             newsize = respond.Length;
         }
@@ -150,7 +150,7 @@ namespace App11.Views.Buyers
 
                 var client = new HttpClient();
 
-                var response = await client.PostAsync("http://dev.foodforus.cloud/public/api/v1/createMessage", values);
+                var response = await client.PostAsync("http://system.foodforus.cloud/api/v1/createMessage", values);
                 var respond = await response.Content.ReadAsStringAsync();
 
                 var toastConfig = new ToastConfig("Message Sent");
