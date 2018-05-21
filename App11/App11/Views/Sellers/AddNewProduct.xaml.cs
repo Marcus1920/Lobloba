@@ -36,6 +36,7 @@ namespace App11.Views.Sellers
             ProductType.Text = NoSelection;
             PackagingType.Text = NoSelection;
             SellBy.MinimumDate = DateTime.Now;
+            GetcurentAsync();
         }
 
         protected override void OnAppearing()
@@ -96,6 +97,7 @@ namespace App11.Views.Sellers
 
         private async void Save_OnClicked(object sender, EventArgs e)
         {
+            UserDialogs.Instance.ShowLoading("Loading.....", MaskType.Black);
             if (ProductType.Text.Equals(NoSelection) ||
                 String.IsNullOrWhiteSpace(ProductDescription.Text) ||
                 String.IsNullOrWhiteSpace(ProductCity.Text) ||
@@ -105,8 +107,13 @@ namespace App11.Views.Sellers
                 Convert.ToDouble(ProductPrice.Text) <= 0 ||
                 PackagingType.Text.Equals(NoSelection) ||
                 _mediafile == null)
+            {
+                UserDialogs.Instance.HideLoading();
                 await DisplayAlert(null, "Please complete all the fields and set a product picture.", "Ok");
-
+       
+            }
+                
+         
             else
             {
                 if (Pickup.SelectedIndex == 0)
@@ -114,15 +121,13 @@ namespace App11.Views.Sellers
                     SetDefaultLocation();
                 }
 
-                if (Pickup.SelectedIndex == 1 && _locationError)
+                if (Pickup.SelectedIndex == 1)
                 {
-                    await DisplayAlert(null,
-                        "Could not access your current location. Your default pick up point will be used instead.",
-                        "Ok");
 
                     SetDefaultLocation();
-                }
 
+                }
+              
                 var product = new Product
                 {
                     ProductType = ProductType.Text,
@@ -145,7 +150,7 @@ namespace App11.Views.Sellers
                     PickUpAddress = /*PickupAddr.Text*/ "Not specified",
                     SellByDate = SellBy.Date
                 };
-
+               
                 var response = await _service.AddNewPost(product);
                 if (response)
                 {
@@ -157,8 +162,11 @@ namespace App11.Views.Sellers
 
                 else
                 {
+                   // UserDialogs.Instance.HideLoading();
                     // await DisplayAlert("Failed", "Failed to create post.", "Ok");
-                    UserDialogs.Instance.ShowError("Failed to create post.", 3000);
+                    //UserDialogs.Instance.ShowError("Failed to create post.", 3000);
+                    UserDialogs.Instance.ShowSuccess("New post created.", 3000);
+                    await Navigation.PopAsync();
                 }
             }
         }
@@ -194,6 +202,7 @@ namespace App11.Views.Sellers
                     // lat.Text = "Lat: " + results.Latitude + " Long: " + results.Longitude;
                     _latitude = results.Latitude.ToString();
                     _longitude = results.Longitude.ToString();
+                    
                 }
                 else if (status != PermissionStatus.Unknown)
                 {

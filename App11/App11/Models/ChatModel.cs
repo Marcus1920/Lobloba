@@ -40,7 +40,7 @@ public class Chatcallback
 {
     #region HistoryList
     private readonly string _apiKey = (Application.Current as App).UserTokenKey;
-    public async Task<List<ChatModel>> GetChatlistmessage(String  PostId)
+    public async Task<List<ChatModel>> GetChatlistmessage(String PostId)
     {
     
 
@@ -53,7 +53,7 @@ public class Chatcallback
     
 
          var client = new HttpClient();
-        var response = await client.PostAsync("http://dev.foodforus.cloud/public/api/v1/conversation", values);
+        var response = await client.PostAsync("http://system.foodforus.cloud/api/v1/conversation", values);
         var respond = await response.Content.ReadAsStringAsync();
         var message = JsonConvert.DeserializeObject<List<ChatModel>>(respond);
      

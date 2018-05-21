@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Acr.UserDialogs;
 using App11.Models;
 using App11.Services.ShareService;
-using App11.Views.Buyers;
+using App11.Views.Sellers;
 using Plugin.Settings;
 using Xamarin.Forms;
 
@@ -107,9 +107,6 @@ namespace App11.ViewModels.Buyers.Sellers
 
         {
             InitializeDataAsync();
-
-
-
         }
 
 
@@ -128,7 +125,7 @@ namespace App11.ViewModels.Buyers.Sellers
 
         public async Task OpenOtherPage()
         {
-            await Navigation.PushModalAsync(new BuyersHome());
+            await Navigation.PushModalAsync(new SellersMaster());
         }
 
 

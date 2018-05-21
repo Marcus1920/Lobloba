@@ -47,7 +47,7 @@ namespace App11.Views.Buyers
             });
             var clients = new HttpClient();
             var contents = new MultipartContent();
-            var response = await clients.PostAsync("http://dev.foodforus.cloud/public/api/v1/getConversation", valuesS);
+            var response = await clients.PostAsync("http://system.foodforus.cloud/api/v1/getConversation", valuesS);
             var respond = await response.Content.ReadAsStringAsync();
 
 
@@ -56,7 +56,7 @@ namespace App11.Views.Buyers
 
             ChatId = respon.conversation_id;
 
-            //  await DisplayAlert("Alert", ChatId, "Ok");
+          //    await DisplayAlert("Alert", ChatId, "Ok");
 
 
         }
@@ -83,13 +83,13 @@ namespace App11.Views.Buyers
 
             });
 
-
+            await ChatInit();
             var client = new HttpClient();
-            var response = await client.PostAsync("http://dev.foodforus.cloud/public/api/v1/conversation", values);
+            var response = await client.PostAsync("http://system.foodforus.cloud/api/v1/conversation", values);
             var respond = await response.Content.ReadAsStringAsync();
             size = respond.Length;
 
-            StartTimer();
+         //  StartTimer();
         }
 
 
@@ -102,7 +102,7 @@ namespace App11.Views.Buyers
 
             });
             var client = new HttpClient();
-            var response = await client.PostAsync("http://dev.foodforus.cloud/public/api/v1/conversation", values);
+            var response = await client.PostAsync("http://system.foodforus.cloud/api/v1/conversation", values);
             var respond = await response.Content.ReadAsStringAsync();
             newsize = respond.Length;
         }

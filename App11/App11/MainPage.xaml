@@ -22,7 +22,7 @@
             Clicked="BtnLogin_clicked"
             />
 
-
+       
 
         <Button Text="Register" 
                 FontSize="Large"
@@ -33,7 +33,8 @@
                 Clicked="Btnregister_Clicked"
                  />
 
-      
+
+
 
     </StackLayout>
 
